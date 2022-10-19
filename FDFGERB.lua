@@ -2845,11 +2845,11 @@ if text == 'ايدي' or text == 'كشف' then
         local U = LuaTele.getUser(UserId)
         local Nn = U.first_name
         local RinkBot = Controller(msg_chat_id, UserId)
-        local TotalMsg = Redis:get(black .. 'Num:Message:User' .. msg_chat_id .. ':' .. UserId) or 0
-        local TotalEdit = Redis:get(black .. 'Num:Message:Edit' .. msg_chat_id .. UserId) or 0
+        local TotalMsg = Redis:get(FDFGERB .. 'Num:Message:User' .. msg_chat_id .. ':' .. UserId) or 0
+        local TotalEdit = Redis:get(FDFGERB .. 'Num:Message:Edit' .. msg_chat_id .. UserId) or 0
         local TotalMsgT = Total_message(TotalMsg)
-        local NumAdd = Redis:get(black .. "Num:Add:Memp" .. msg.chat_id .. ":" .. UserId) or 0
-        local NumberGames = Redis:get(black .. "Num:Add:Games" .. msg.chat_id .. UserId) or 0
+        local NumAdd = Redis:get(FDFGERB .. "Num:Add:Memp" .. msg.chat_id .. ":" .. UserId) or 0
+        local NumberGames = Redis:get(FDFGERB .. "Num:Add:Games" .. msg.chat_id .. UserId) or 0
         if Get_Is_Id then
             local Get_Is_Id = Get_Is_Id:gsub('#AddMem', NumAdd)
             local Get_Is_Id = Get_Is_Id:gsub('#id', UserId)
@@ -2871,11 +2871,11 @@ if text == 'ايدي' or text == 'كشف' then
 end
 if text == "ايدي" or text == 'id' or text == 'Id' or text == 'ID' then
     if msg.reply_to_message_id == 0 then
-        if not Redis:get(black .. "Status:Id" .. msg_chat_id) then
+        if not Redis:get(FDFGERB .. "Status:Id" .. msg_chat_id) then
             return false
         end
         if ChannelJoin(msg) == false then
-            local chinfo = Redis:get(black .. "ch:admin")
+            local chinfo = Redis:get(FDFGERB .. "ch:admin")
             local reply_markup = LuaTele.replyMarkup {
                 type = 'inline',
                 data = {{{
@@ -2892,12 +2892,12 @@ if text == "ايدي" or text == 'id' or text == 'Id' or text == 'ID' then
         local photo = LuaTele.getUserProfilePhotos(msg.sender_id.user_id)
         local UserId = msg.sender_id.user_id
         local RinkBot = msg.Name_Controller
-        local TotalMsg = Redis:get(black .. 'Num:Message:User' .. msg_chat_id .. ':' .. msg.sender_id.user_id) or 0
+        local TotalMsg = Redis:get(FDFGERB .. 'Num:Message:User' .. msg_chat_id .. ':' .. msg.sender_id.user_id) or 0
         local TotalPhoto = photo.total_count or 0
-        local TotalEdit = Redis:get(black .. 'Num:Message:Edit' .. msg_chat_id .. msg.sender_id.user_id) or 0
+        local TotalEdit = Redis:get(FDFGERB .. 'Num:Message:Edit' .. msg_chat_id .. msg.sender_id.user_id) or 0
         local TotalMsgT = Total_message(TotalMsg)
-        local NumberGames = Redis:get(black .. "Num:Add:Games" .. msg.chat_id .. msg.sender_id.user_id) or 0
-        local NumAdd = Redis:get(black .. "Num:Add:Memp" .. msg.chat_id .. ":" .. msg.sender_id.user_id) or 0
+        local NumberGames = Redis:get(FDFGERB .. "Num:Add:Games" .. msg.chat_id .. msg.sender_id.user_id) or 0
+        local NumAdd = Redis:get(FDFGERB .. "Num:Add:Memp" .. msg.chat_id .. ":" .. msg.sender_id.user_id) or 0
         local Texting = {"بحبك 🥺♥.!", "وشك دا ولا وش رجل 😂",
                          "صوره قمر زي صاحبها 🥺♥.!", "رقمي 012345... 🙈♥.!",
                          "وشك دا ولا القمر 🙈♥.!",
@@ -2909,8 +2909,8 @@ if text == "ايدي" or text == 'id' or text == 'Id' or text == 'ID' then
         else
             UserInfousername = 'لا يوجد'
         end
-        Get_Is_Id = Redis:get(black .. "Set:Id:Groups") or Redis:get(black .. "Set:Id:Group" .. msg_chat_id)
-        if Redis:get(black .. "Status:IdPhoto" .. msg_chat_id) then
+        Get_Is_Id = Redis:get(FDFGERB .. "Set:Id:Groups") or Redis:get(FDFGERB .. "Set:Id:Group" .. msg_chat_id)
+        if Redis:get(FDFGERB .. "Status:IdPhoto" .. msg_chat_id) then
             if Get_Is_Id then
                 local Get_Is_Id = Get_Is_Id:gsub('#AddMem', NumAdd)
                 local Get_Is_Id = Get_Is_Id:gsub('#id', msg.sender_id.user_id)
@@ -2972,7 +2972,7 @@ if text == "ايدي" or text == 'id' or text == 'Id' or text == 'ID' then
 end
 if text and text:match('^كشف (%d+)$') then
     if ChannelJoin(msg) == false then
-        local chinfo = Redis:get(black .. "ch:admin")
+        local chinfo = Redis:get(FDFGERB .. "ch:admin")
         local reply_markup = LuaTele.replyMarkup {
             type = 'inline',
             data = {{{
@@ -2993,11 +2993,11 @@ if text and text:match('^كشف (%d+)$') then
     end
     local Name_User = UserInfo.first_name
     local RinkBot = Controller(msg_chat_id, UserId)
-    local TotalMsg = Redis:get(black .. 'Num:Message:User' .. msg_chat_id .. ':' .. UserId) or 0
-    local TotalEdit = Redis:get(black .. 'Num:Message:Edit' .. msg_chat_id .. UserId) or 0
+    local TotalMsg = Redis:get(FDFGERB .. 'Num:Message:User' .. msg_chat_id .. ':' .. UserId) or 0
+    local TotalEdit = Redis:get(FDFGERB .. 'Num:Message:Edit' .. msg_chat_id .. UserId) or 0
     local TotalMsgT = Total_message(TotalMsg)
-    local NumAdd = Redis:get(black .. "Num:Add:Memp" .. msg.chat_id .. ":" .. UserId) or 0
-    local NumberGames = Redis:get(black .. "Num:Add:Games" .. msg.chat_id .. UserId) or 0
+    local NumAdd = Redis:get(FDFGERB .. "Num:Add:Memp" .. msg.chat_id .. ":" .. UserId) or 0
+    local NumberGames = Redis:get(FDFGERB .. "Num:Add:Games" .. msg.chat_id .. UserId) or 0
 
     if UserInfo.luatele == "error" and UserInfo.code == 6 then
         return send(msg_chat_id, msg_id, "\n❍ عذرآ لا تستطيع استخدام ايدي خطأ ", "md", true)
@@ -3010,7 +3010,7 @@ if text and text:match('^كشف (%d+)$') then
 end
 if text and text:match('^كشف (%d+)$') then
     if ChannelJoin(msg) == false then
-        local chinfo = Redis:get(black .. "ch:admin")
+        local chinfo = Redis:get(FDFGERB .. "ch:admin")
         local reply_markup = LuaTele.replyMarkup {
             type = 'inline',
             data = {{{
@@ -3031,11 +3031,11 @@ if text and text:match('^كشف (%d+)$') then
     end
     local Name_User = UserInfo.first_name
     local RinkBot = Controller(msg_chat_id, UserId)
-    local TotalMsg = Redis:get(black .. 'Num:Message:User' .. msg_chat_id .. ':' .. UserId) or 0
-    local TotalEdit = Redis:get(black .. 'Num:Message:Edit' .. msg_chat_id .. UserId) or 0
+    local TotalMsg = Redis:get(FDFGERB .. 'Num:Message:User' .. msg_chat_id .. ':' .. UserId) or 0
+    local TotalEdit = Redis:get(FDFGERB .. 'Num:Message:Edit' .. msg_chat_id .. UserId) or 0
     local TotalMsgT = Total_message(TotalMsg)
-    local NumAdd = Redis:get(black .. "Num:Add:Memp" .. msg.chat_id .. ":" .. UserId) or 0
-    local NumberGames = Redis:get(black .. "Num:Add:Games" .. msg.chat_id .. UserId) or 0
+    local NumAdd = Redis:get(FDFGERB .. "Num:Add:Memp" .. msg.chat_id .. ":" .. UserId) or 0
+    local NumberGames = Redis:get(FDFGERB .. "Num:Add:Games" .. msg.chat_id .. UserId) or 0
 
     if UserInfo.luatele == "error" and UserInfo.code == 6 then
         return send(msg_chat_id, msg_id, "\n❍ عذرآ لا تستطيع استخدام ايدي خطأ ", "md", true)
@@ -3049,7 +3049,7 @@ end
 if text then
     if text:match('^ايدي @(%S+)$') or text:match('^كشف @(%S+)$') then
         if ChannelJoin(msg) == false then
-            local chinfo = Redis:get(black .. "ch:admin")
+            local chinfo = Redis:get(FDFGERB .. "ch:admin")
             local reply_markup = LuaTele.replyMarkup {
                 type = 'inline',
                 data = {{{
@@ -3079,11 +3079,11 @@ if text then
         local Name_User = U.first_name
         local UserId = UserId_Info.id
         local RinkBot = Controller(msg_chat_id, UserId_Info.id)
-        local TotalMsg = Redis:get(black .. 'Num:Message:User' .. msg_chat_id .. ':' .. UserId) or 0
-        local TotalEdit = Redis:get(black .. 'Num:Message:Edit' .. msg_chat_id .. UserId) or 0
+        local TotalMsg = Redis:get(FDFGERB .. 'Num:Message:User' .. msg_chat_id .. ':' .. UserId) or 0
+        local TotalEdit = Redis:get(FDFGERB .. 'Num:Message:Edit' .. msg_chat_id .. UserId) or 0
         local TotalMsgT = Total_message(TotalMsg)
-        local NumAdd = Redis:get(black .. "Num:Add:Memp" .. msg.chat_id .. ":" .. UserId) or 0
-        local NumberGames = Redis:get(black .. "Num:Add:Games" .. msg.chat_id .. UserId) or 0
+        local NumAdd = Redis:get(FDFGERB .. "Num:Add:Memp" .. msg.chat_id .. ":" .. UserId) or 0
+        local NumberGames = Redis:get(FDFGERB .. "Num:Add:Games" .. msg.chat_id .. UserId) or 0
         if Get_Is_Id then
             local Get_Is_Id = Get_Is_Id:gsub('#AddMem', NumAdd)
             local Get_Is_Id = Get_Is_Id:gsub('#id', UserId)
